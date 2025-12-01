@@ -1,0 +1,56 @@
+PROGRAM TestNewFeatures;
+(* Chuong trinh test cac tinh nang moi cua KPL Parser *)
+
+CONST
+  MAX = 100;
+  PI = 3;
+  MSG = "Hello KPL";      // [MỚI] Test hằng chuỗi (String)
+
+TYPE
+  TInt  = INTEGER;
+  TArr  = ARRAY(. 10 .) OF INTEGER;
+  TStr  = STRING;         // [MỚI] Test kiểu String
+  TByt  = BYTES;          // [MỚI] Test kiểu Bytes
+
+VAR
+  n: INTEGER;
+  i: INTEGER;
+  s: INTEGER;
+  strVar  : TStr;
+  byteVar : TByt;
+  A       : TArr;
+  x: INTEGER;
+  y: INTEGER;
+  z: INTEGER;
+  g: INTEGER;
+
+// Ham tinh luy thua
+FUNCTION Pow2(base : INTEGER) : INTEGER;
+BEGIN
+  Pow2 := base ** 2;      // [MỚI] Test toán tử lũy thừa (**)
+END;
+
+BEGIN
+  // 1. [MỚI] Test lenh gan song song (Parallel Assignment)
+  x, y, z, g := 10, 20, 30, "haha";  
+  
+  // 2. [MỚI] Test kieu String va comment //
+  strVar := "Parser Working!"; // Test string assignment
+
+  // 3. [MỚI] Test cau lenh REPEAT ... UNTIL
+  n := 0;
+  REPEAT
+    n := n + 1;
+    // 4. [MỚI] Test phep chia lay du (%)
+    IF n % 2 = 0 THEN 
+      CALL WriteI(n);
+  UNTIL n > 10;
+
+  // 5. Test cac cau lenh cu de dam bao khong bi loi
+  FOR i := 1 TO 5 DO
+    BEGIN
+      A(. i .) := Pow2(i);
+      CALL WriteI(A(. i .));
+    END;
+
+END.
