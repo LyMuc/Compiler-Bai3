@@ -32,7 +32,7 @@ END;
 
 BEGIN
   // 1. [MỚI] Test lenh gan song song (Parallel Assignment)
-  x, y, z, g := 10, 20, 30, "haha";  
+  x, y, z, g := 10, 20, 30, z+y;  
   
   // 2. [MỚI] Test kieu String va comment //
   strVar := "Parser Working!"; // Test string assignment
